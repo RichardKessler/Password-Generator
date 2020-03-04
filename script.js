@@ -10,54 +10,43 @@ function writePassword() {
 
 }
 
+function generatePassword() {
+    let passLength = prompt("How long do you want your password to be?  Please choose 8-128");
+    if (passLength < 8 || passLength > 128) {
+        alert("Please input a number from 8 to 128.");
+        prompt("How long do you want your password to be?");
+    }
+
+    let alphaSmall = confirm("Do you want lowercase letters?");
+    if (alphaSmall) {
+        alert("Thank you");
+    } else {
+        alert("Got it");
+    }
+
+    let alphaLarge = confirm("Do you want uppercase letters?");
+    if (alphaLarge) {
+        alert("Thank you");
+    } else {
+        alert("Got it");
+    }
+
+    let numbers = confirm("Do you want numbers?");
+    if (numbers) {
+        alert("Thank you");
+    } else {
+        alert("Got it");
+    }
+
+    let special = confirm("Do you want special characters?");
+    if (special) {
+        alert("Thank you");
+    } else {
+        alert("Got it");
+    }
+
+}
+console.log(passLength + " " + alphaSmall + " " + alphaLarge + " " + numbers + " " + special);
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-function generateAlphaCharacters(numberToGenerate, isUpperCase) {
-    var results = "";
-    var alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-    for (i = 0; i < numberToGenerate; i++) {
-        results += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-    }
-    if (isUpperCase) {
-        results = results.toUpperCase();
-    }
-    console.log(results);
-    return (results);
-}
-
-function generateNumbers(numberToGenerate) {
-    var results = "";
-    var numbers = "0123456789";
-
-    for (i = 0; i < numberToGenerate; i++) {
-        results += numbers.charAt(Math.floor(Math.random() * numbers.length));
-    }
-    console.log(results);
-    return (results);
-}
-
-function generateSpecialCharacters(numberToGenerate) {
-    var results = "";
-    var specialCharacters = "!@#$%^&*(){}[]:;~";
-
-    for (i = 0; i < numberToGenerate; i++) {
-        results += specialCharacters.charAt(Math.floor(Math.random() * specialCharacters.length));
-    }
-    console.log(results);
-    return (results);
-}
-
-lowerCasePart = generateAlphaCharacters(5, false);
-upperCasePart = generateAlphaCharacters(5, true);
-numbers = generateNumbers(20);
-characters = generateSpecialCharacters(30);
-
-createdCharacters = lowerCasePart + upperCasePart + numbers + characters;
-console.log(createdCharacters);
-
-// Randomize our final password
-var finalPassword = createdCharacters.split('').sort(function() { return 0.5 - Math.random() }).join('');
-console.log(finalPassword);
