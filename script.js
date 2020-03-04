@@ -35,20 +35,22 @@ function generatePassword() {
     let char = confirm("Do you want special characters?");
     let charResult = "";
 
+
+
     for (let i = 0; i < parseInt(strength); i++) {
 
         if (alpha) {
-            alphaResult += alphaSmall.charAt(Math.floor(Math.random() * alphaSmall.length + strength));
+            alphaResult += alphaSmall.charAt(Math.floor(Math.random() * alphaSmall.length));
         }
         console.log(alphaResult);
 
         if (upper) {
-            upperResult += special.charAt(Math.floor(Math.random() * special.length + strength));
+            upperResult += caps.charAt(Math.floor(Math.random() * caps.length));
         }
         console.log(upperResult);
 
         if (int) {
-            intResult += numbers.charAt(Math.floor(Math.random() * numbers.length + strength));
+            intResult += numbers.charAt(Math.floor(Math.random() * numbers.length));
         }
         console.log(intResult);
 
@@ -56,12 +58,16 @@ function generatePassword() {
             charResult += special.charAt(Math.floor(Math.random() * special.length));
         }
         console.log(charResult);
-
-
+        let draftPassword = alphaResult + upperResult + intResult + charResult;
+        let finalPassword = draftPassword.split('').sort(function() { return 0.5 - Math.random() }).join('');
+        console.log(draftPassword);
+        console.log(finalPassword);
+        // return finalPassword;
     }
 
 
-    return alphaResult, upperResult, intResult, charResult;
+    // return alphaResult, upperResult, intResult, charResult;
+    return finalPassword;
 }
 
 
