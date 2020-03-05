@@ -62,12 +62,12 @@ function generatePassword() {
         let finalPassword = draftPassword.split('').sort(function() { return 0.5 - Math.random() }).join('');
         console.log(draftPassword);
         console.log(finalPassword);
-        // return finalPassword;
+        return finalPassword;
     }
 
 
-    // return alphaResult, upperResult, intResult, charResult;
-    return finalPassword;
+    // return alphaResult, upperResult, intResult, charResult, finalPassword;
+    // return finalPassword;
 }
 
 
