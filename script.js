@@ -34,6 +34,8 @@ function generatePassword() {
         let char = confirm("Do you want special characters?");
         let charResult = "";
 
+        let draftPassword = alphaResult + upperResult + intResult + charResult;
+
         for (let i = 0; i < parseInt(strength); i++) {
 
             if (alpha) {
@@ -55,23 +57,29 @@ function generatePassword() {
                 charResult += special.charAt(Math.floor(Math.random() * special.length));
             }
 
+            if (alpha) { draftPassword += alphaResult.charAt(i); }
+            if (upper) { draftPassword += upperResult.charAt(i); }
+            if (int) { draftPassword += intResult.charAt(i); }
+            if (char) { draftPassword += charResult.charAt(i); };
+
         }
 
         if (!alpha && !upper && !int && !char) {
             alert("You must choose an option.")
         }
 
+
+
         // Log the results of the above conditions
         // Make a draftPassword that will get scrambled for the finalPassword
         // Take the finalPassword and shrink it to the strength set by the user's input
         console.log(alphaResult, upperResult, intResult, charResult);
-        let draftPassword = alphaResult + upperResult + intResult + charResult;
-        let finalPassword = draftPassword.split('').sort(function() { return 0.5 - Math.random() }).join('');
-        let userPassword = finalPassword.substring(0, strength);
+        let userPassword = draftPassword.substring(0, strength);
+        let finalPassword = userPassword.split('').sort(function() { return 0.5 - Math.random() }).join('');
         console.log(draftPassword);
-        console.log(finalPassword);
+        console.log(userPassword);
 
-        return userPassword;
+        return finalPassword;
 
     } else {
         alert("Please input a number from 8 - 128."); // Will alert if conditions are outside the 8 - 128 strength of password
