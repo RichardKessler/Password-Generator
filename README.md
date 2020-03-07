@@ -29,7 +29,6 @@ Once you load the site you will se a text area where the generated password will
 ## Credits
 
 * Eddie Saunders - Helping debug the program and for feedback.
-* Noah King - For feedback with the logic.
 
 ## Author
 
